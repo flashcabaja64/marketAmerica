@@ -53,12 +53,18 @@
           </div>
         </section>
         <section class="card_buttons">
-          <button>More Info.</button>
+          <button class="more_info" data-id="1320567920" onclick="showModal(this)">More Info.</button>
           <button>Add Cart</button>
         </section>
       </div>
       <!-- https://codepen.io/tgaychey/pen/PROMVy?editors=1100 -->
     </section>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="showModal()">&times;</span>
+            <h1>Hello, I am a modal!</h1>
+        </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

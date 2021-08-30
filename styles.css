@@ -20,6 +20,8 @@ body {
   height: 100vh;
 }
 
+/* Navigation */
+
 header {
   padding: 5px;
   color: #ffffff;
@@ -68,6 +70,8 @@ nav {
   color: #482ff7;
 }
 
+/* Individual Card Styles */
+
 .cards_wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -81,7 +85,7 @@ nav {
   border: 0px solid black;
   margin: 0.5rem;
   position: relative;
-  height: 30rem;
+  height: 450px;
   overflow: hidden;
   border-radius: 0.3rem;
   flex: 1;
@@ -98,6 +102,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 210px;
+  background-color: white;
 }
 
 img {
@@ -108,6 +114,7 @@ img {
 .card_text_wrapper {
   padding: 20px;
   background: #f0f0f0;
+  height: 210px;
 }
 
 .card_title {
@@ -115,15 +122,68 @@ img {
 }
 
 .card_buttons {
-  position:absolute;
-  display: inline-flex;
   bottom:0;
+  display:flex;
 }
 
-.card_buttons > button {
+.card_buttons button {
+  /* width: 50%;
+  height: 30px;
+  cursor: pointer;
+  color: blue; */
   width: 50%;
   height: 30px;
   cursor: pointer;
+  background: #ececec;
+  text-decoration: none;
+  color: #666;
+  border-radius: 5%;
+}
+.card_buttons button:hover {
+  transform: scale(1.1);
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
 @media only screen and (max-width: 768px) {
@@ -134,14 +194,16 @@ img {
     flex-direction: column;
     background-color: #4a2ff7ab;
     width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    min-height: 93vh;
   }
 
   .nav_menu.active {
     left: 0;
+    z-index: 1;
   }
 
   .nav_menu li {
