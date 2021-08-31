@@ -26,6 +26,8 @@ header {
   padding: 5px;
   color: #ffffff;
   background-color: #0084ff;
+  position:sticky;
+  z-index: 20;
 }
 
 nav {
@@ -34,6 +36,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
+  
 }
 
 .nav_menu {
@@ -72,7 +75,7 @@ nav {
 
 /* Individual Card Styles */
 
-.cards_wrapper {
+#cards_wrapper {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -112,6 +115,10 @@ img {
 }
 
 .card_text_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   background: #f0f0f0;
   height: 210px;
