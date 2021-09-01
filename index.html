@@ -19,9 +19,6 @@
   <body>
     <header>
       <nav>
-        <div id="logo">
-          Logo
-        </div>
         <ul class="nav_menu">
           <li>
             <a href="" class="nav-link">Home</a>
@@ -38,8 +35,24 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+        <div id="logo">
+          Shopping Cart
+        </div>
+        <div id="cart">
+          <img class="shop_cart" src="assets/shopping_cart.png" alt="shopping cart" />
+        </div>
       </nav>
     </header>
+    <section class="sorter">
+      <select onchange="sortBy(this.value)">
+        <option selected disabled>Sort By</option>
+        <option value="available">Availability</option>
+        <option value="priceLow">Price: Low - High</option>
+        <option value="priceHigh">Price: High - Low</option>
+        <option value="titleAZ">Title: A - Z</option>
+        <option value="titleZA">Title: Z - A</option>
+      </select>
+    </section>
     <section id="cards_wrapper">
       <!-- <div class="main_card">
         <div class="card_img">
@@ -64,7 +77,8 @@
             <h1>Hello, I am a modal!</h1>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
 <!-- https://codepen.io/tgaychey/pen/PROMVy?editors=1100 -->
