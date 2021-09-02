@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Market America Assessment</title>
-    <meta name="description" content="A simple site for shop products.">
+    <meta name="description" content="A simple site for SHOP products.">
     <meta name="author" content="Hubert">
 
     <link rel="icon" href="/favicon.ico">
@@ -20,15 +20,9 @@
     <header>
       <nav>
         <ul class="nav_menu">
-          <li>
-            <a href="" class="nav-link">Home</a>
-          </li>
-          <li>
-            <a href="" class="nav-link">Contact</a>
-          </li>
-          <li>
-            <a href="" class="nav-link">Footer</a>
-          </li>
+          <li><a href="" class="nav-link">Home</a></li>
+          <li><a href="" class="nav-link">Contact</a></li>
+          <li><a href="" class="nav-link">Footer</a></li>
         </ul>
         <div class="hamburger">
           <span class="bar"></span>
@@ -38,7 +32,7 @@
         <div id="logo">
           Shopping Cart
         </div>
-        <div id="cart">
+        <div id="cart" onclick="showModal()">
           <img class="shop_cart" src="assets/shopping_cart.png" alt="shopping cart" />
         </div>
       </nav>
@@ -73,9 +67,26 @@
     </section>
     <div class="modal">
         <div class="modal-content">
-            <span class="close-button" onclick="showModal()">&times;</span>
-            <h1>Hello, I am a modal!</h1>
-        </div>
+          <p>Shopping Cart</p>
+          <span class="close-button" onclick="closeModal()">&times;</span>
+          <div class="cart_item">
+            <div class="cart_img">
+              <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />
+            </div>
+            <div class="cart_content">
+              <ul>
+                <li class="cart_title">Octopus Ocean Animal Bookend Pair Resin</li>
+                <li class="cart_sub">Measures 11 x 10 1/4 x 7 inches Made of painted resin with distressed finish Made by Midwest, imported</li>
+                <li class="cart_price">$40.00</li>
+                <li class="cart_brand"><span>Brand: </span>Mary B Decorative Art</li>
+              </ul>
+              <div>
+                <input type="number"/>
+                <a>Delete</a>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
     <script src="js/cart.js"></script>
     <script src="js/script.js"></script>
