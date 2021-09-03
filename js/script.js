@@ -3,7 +3,7 @@ const shoppingCart = new ShoppingCart();
 
 document.addEventListener('DOMContentLoaded', () => {
   getData();
-  shoppingCart.init()
+  shoppingCart.init();
 })
 
 const hamburger = document.querySelector('.hamburger');
@@ -52,7 +52,7 @@ const sortBy = (value) => {
 }
 
 const renderCards = (items) => {
-  let card_container = document.getElementById('cards_wrapper')
+  let card_container = document.getElementById('cards_wrapper');
 
   let result = items.map(el => {
     return `
@@ -71,18 +71,25 @@ const renderCards = (items) => {
             <button data-id="${el.prodId}" onclick="addCart(this)">Add Cart</button>
           </section>
         </section>
-        
       </div>
     `
   })
   card_container.innerHTML = result.join("")
 }
 
+// Cart functions
 const addCart = (element) => {
   shoppingCart.addItem(parseInt(element.dataset.id))
 }
 
+const deleteItem = (element) => {
+  shoppingCart.deleteCartItem(parseInt(element.dataset.id))
+  element.parentElement.parentElement.parentElement.parentElement.remove()
+}
+
 const showModal = (element) => {
+  shoppingCart.renderAllCart();
+  document.body.style.overflow = 'hidden'
   const modal = document.querySelector(".modal");
   modal.classList.toggle("show-modal")
   //renderModal(element.dataset.id)
@@ -96,6 +103,8 @@ const renderModal = (id) => {
 const closeModal = () => {
   const modal = document.querySelector(".modal");
   modal.classList.toggle("show-modal")
+  document.getElementById("cart_container").innerHTML = '';
+  document.body.style.overflow = 'auto';
 }
 
 const getData = () => {
@@ -106,5 +115,4 @@ const getData = () => {
       await data.List.forEach(el => jsonlist.push(el))
     })
     .then(() => renderCards(jsonlist))
-    
 }

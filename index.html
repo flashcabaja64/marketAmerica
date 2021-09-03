@@ -67,25 +67,30 @@
     </section>
     <div class="modal">
         <div class="modal-content">
-          <p>Shopping Cart</p>
           <span class="close-button" onclick="closeModal()">&times;</span>
-          <div class="cart_item">
-            <div class="cart_img">
-              <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />
-            </div>
-            <div class="cart_content">
-              <ul>
-                <li class="cart_title">Octopus Ocean Animal Bookend Pair Resin</li>
-                <li class="cart_sub">Measures 11 x 10 1/4 x 7 inches Made of painted resin with distressed finish Made by Midwest, imported</li>
-                <li class="cart_price">$40.00</li>
-                <li class="cart_brand"><span>Brand: </span>Mary B Decorative Art</li>
-              </ul>
-              <div>
-                <input type="number"/>
-                <a>Delete</a>
+          <p class="shop_cart_title">Shopping Cart</p>
+          <section id="cart_container">
+            <!-- <div class="cart_item">
+              <div class="cart_img">
+                <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />
               </div>
-            </div>
-          </div>
+              <div class="cart_content">
+                <ul>
+                  <li class="cart_title">Octopus Ocean Animal Bookend Pair Resin</li>
+                  <li class="cart_sub">Measures 11 x 10 1/4 x 7 inches Made of painted resin with distressed finish Made by Midwest, imported</li>
+                  <li class="cart_price">$40.00</li>
+                  <li class="cart_brand"><span>Brand: </span>Mary B Decorative Art</li>
+                  <li class="cart_buttons">
+                    <input type="number"/>
+                    <a data-id="1" class="asdfer" onclick="deleteItem(this)">Delete</a>
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+          </section>
+          <aside>
+            Subtotal
+          </aside>
       </div>
     </div>
     <script src="js/cart.js"></script>
