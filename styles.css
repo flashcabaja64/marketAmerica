@@ -307,9 +307,30 @@ nav {
 }
 
 input[type="number"] {
-  width: 60px;
-  height: 30px;
-  padding: 5px;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  outline: none;
+  width: 20%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.arrow_minus,
+.arrow_plus {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px 12px;
+  width: 40px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: none;
 }
 
 @media only screen and (max-width: 767px) {

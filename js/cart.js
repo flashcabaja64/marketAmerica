@@ -61,10 +61,23 @@ class ShoppingCart {
       .catch(err => console.log(err))
   }
 
+  //Calculations
+
   calculateTotal() {
-    this.cart.reduce((acc, cur) => {
+    let subtotal = document.getElementById("subtotal");
+    let result = this.cart.reduce((acc, cur) => {
       return acc + (cur.quantity * cur.price)
     }, 0)
+
+    return subtotal.innerHTML = result
+  }
+
+  addQuantity(product_id) {
+    //console.log(product_id)
+  }
+
+  subtractQuantity(product_id) {
+    //console.log(product_id)
   }
 
   renderAllCart() {
@@ -81,9 +94,11 @@ class ShoppingCart {
             <li class="cart_sub">${item.description}</li>
             <li class="cart_price">${item.currency}${item.price}</li>
             <li class="cart_brand"><span>Brand: </span>${item.brand}</li>
-            <li class="cart_buttons">
+            <li class="cart_buttons" data-id="${item.prodId}">
+              <button class="arrow_minus" onclick="minusQuantity(this)"> - </button>
               <input class="cart_quantity" type="number" value="${item.quantity}"/>
-              <a data-id="${item.prodId}" class="cart_delete" onclick="deleteItem(this)">Delete</a>
+              <button class="arrow_plus" onclick="addQuantity(this)"> + </button>
+              <a class="cart_delete" onclick="deleteItem(this)">Delete</a>
             </li>
           </ul>
         </div>

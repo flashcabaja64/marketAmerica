@@ -2,7 +2,7 @@ const jsonlist = []
 const shoppingCart = new ShoppingCart();
 
 document.addEventListener('DOMContentLoaded', () => {
-  getData();
+  getAllProducts();
   shoppingCart.init();
 })
 
@@ -15,6 +15,17 @@ const showMenu = () => {
 }
 
 hamburger.addEventListener("click", showMenu);
+
+// Populate all items
+const getAllProducts = () => {
+  fetch('ListJSONTest.json')
+    .then(async res => await res.json())
+    .then(async data => {
+      //console.log(data.List)
+      await data.List.forEach(el => jsonlist.push(el))
+    })
+    .then(() => renderCards(jsonlist))
+}
 
 const sortBy = (value) => {
   if(value === 'priceLow') {
@@ -51,6 +62,23 @@ const sortBy = (value) => {
   renderCards(jsonlist)
 }
 
+// Cart functions
+const addCart = (element) => {
+  shoppingCart.addItem(parseInt(element.dataset.id))
+}
+
+const deleteItem = (element) => {
+  shoppingCart.deleteCartItem(parseInt(element.parentElement.dataset.id))
+  element.parentElement.parentElement.parentElement.parentElement.remove()
+}
+
+const addQuantity = (element) => {
+  shoppingCart.addQuantity(parseInt(element.parentElement.dataset.id))
+}
+const minusQuantity = (element) => {
+  shoppingCart.subtractQuantity(parseInt(element.parentElement.dataset.id))
+}
+
 const renderCards = (items) => {
   let card_container = document.getElementById('cards_wrapper');
 
@@ -77,18 +105,10 @@ const renderCards = (items) => {
   card_container.innerHTML = result.join("")
 }
 
-// Cart functions
-const addCart = (element) => {
-  shoppingCart.addItem(parseInt(element.dataset.id))
-}
-
-const deleteItem = (element) => {
-  shoppingCart.deleteCartItem(parseInt(element.dataset.id))
-  element.parentElement.parentElement.parentElement.parentElement.remove()
-}
-
+// Modal functions
 const showModal = (element) => {
   shoppingCart.renderAllCart();
+  shoppingCart.calculateTotal();
   document.body.style.overflow = 'hidden'
   const modal = document.querySelector(".modal");
   modal.classList.toggle("show-modal")
@@ -107,12 +127,3 @@ const closeModal = () => {
   document.body.style.overflow = 'auto';
 }
 
-const getData = () => {
-  fetch('ListJSONTest.json')
-    .then(async res => await res.json())
-    .then(async data => {
-      //console.log(data.List)
-      await data.List.forEach(el => jsonlist.push(el))
-    })
-    .then(() => renderCards(jsonlist))
-}
