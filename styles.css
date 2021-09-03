@@ -212,12 +212,13 @@ nav {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000000e0;
   opacity: 0;
   visibility: hidden;
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
+
 .modal-content {
   position: absolute;
   top: 50%;
@@ -230,10 +231,11 @@ nav {
   z-index: 4;
   overflow-y: auto;
   max-height: 75vh;
+  min-height: 30vh;
   width: 80%;
 }
 
-.modal-content p {
+.modal-content p.shop_cart_title {
   display: inline-block;
   position: relative;
   left: 50%;
@@ -263,6 +265,12 @@ nav {
 }
 
 /* Cart Modal */
+/* #cart_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+} */
 
 .cart_item {
   display: flex;
@@ -304,6 +312,23 @@ nav {
 .cart_brand > span {
   font-weight: bold;
   font-size: small;
+}
+
+#cart_total {
+  display: block;
+  position: relative;
+  height: 30px;
+  float: right;
+  padding-top: 10px;
+}
+
+.cart_empty {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.cart_empty > p {
+  font-size: 2rem;
 }
 
 input[type="number"] {

@@ -21,7 +21,6 @@ const getAllProducts = () => {
   fetch('ListJSONTest.json')
     .then(async res => await res.json())
     .then(async data => {
-      //console.log(data.List)
       await data.List.forEach(el => jsonlist.push(el))
     })
     .then(() => renderCards(jsonlist))
@@ -59,44 +58,47 @@ const sortBy = (value) => {
       return (a.isAvailable === b.isAvailable) ? 0 : a ? 1 : -1
     })
   }
-  renderCards(jsonlist)
+  renderCards(jsonlist);
 }
 
 // Cart functions
-const addCart = (element) => {
-  shoppingCart.addItem(parseInt(element.dataset.id))
+const addCart = (item) => {
+  shoppingCart.addItem(parseInt(item.dataset.id));
 }
 
-const deleteItem = (element) => {
-  shoppingCart.deleteCartItem(parseInt(element.parentElement.dataset.id))
-  element.parentElement.parentElement.parentElement.parentElement.remove()
+const deleteItem = (item) => {
+  shoppingCart.deleteCartItem(parseInt(item.parentElement.dataset.id));
+  item.parentElement.parentElement.parentElement.parentElement.remove();
+  shoppingCart.calculateTotal();
 }
 
-const addQuantity = (element) => {
-  shoppingCart.addQuantity(parseInt(element.parentElement.dataset.id))
+const addQuantity = (item) => {
+  shoppingCart.addQuantity(parseInt(item.target.parentElement.dataset.id));
+  shoppingCart.calculateTotal();
 }
-const minusQuantity = (element) => {
-  shoppingCart.subtractQuantity(parseInt(element.parentElement.dataset.id))
+const minusQuantity = (item) => {
+  shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
+  shoppingCart.calculateTotal();
 }
 
 const renderCards = (items) => {
   let card_container = document.getElementById('cards_wrapper');
 
-  let result = items.map(el => {
+  let result = items.map(item => {
     return `
       <div class="main_card">
         <div class="card_img">
-          <img class="product_img" src="${el.imageURL}" />
+          <img class="product_img" src="${item.imageURL}" />
         </div>
         <section class="card_text_wrapper">
-          <h4 class="card_title">${el.caption}</h4>
+          <h4 class="card_title">${item.caption}</h4>
           <div class="card_details_wrapper">
-            <div>${el.brand}</div>
-            <div>${el.currency}${el.price}</div>
+            <div>${item.brand}</div>
+            <div>${item.currency}${item.price}</div>
           </div>
           <section class="card_buttons">
             <button class="more_info">More Info.</button>
-            <button data-id="${el.prodId}" onclick="addCart(this)">Add Cart</button>
+            <button data-id="${item.prodId}" onclick="addCart(this)">Add Cart</button>
           </section>
         </section>
       </div>
@@ -109,20 +111,20 @@ const renderCards = (items) => {
 const showModal = (element) => {
   shoppingCart.renderAllCart();
   shoppingCart.calculateTotal();
-  document.body.style.overflow = 'hidden'
+  document.body.style.overflow = 'hidden';
   const modal = document.querySelector(".modal");
-  modal.classList.toggle("show-modal")
+  modal.classList.toggle("show-modal");
   //renderModal(element.dataset.id)
 }
 
 const renderModal = (id) => {
-  return jsonlist.find(el => el.prodId === parseInt(id))
+  return jsonlist.find(el => el.prodId === parseInt(id));
   //console.log(res.quantity)
 }
 
 const closeModal = () => {
   const modal = document.querySelector(".modal");
-  modal.classList.toggle("show-modal")
+  modal.classList.toggle("show-modal");
   document.getElementById("cart_container").innerHTML = '';
   document.body.style.overflow = 'auto';
 }
