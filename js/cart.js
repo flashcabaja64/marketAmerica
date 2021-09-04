@@ -113,9 +113,9 @@ class ShoppingCart {
                 <li role="listitem" class="cart_brand"><span>Brand: </span>${item.brand}</li>
                 <li role="listitem" class="cart_buttons" data-id="${item.prodId}">
                   <button role="button" class="arrow_minus" onclick="minusQuantity(event, this)"> - </button>
-                  <input role="spinbutton" class="cart_quantity" type="number" min="1" value="${item.quantity}"/>
+                  <input role="spinbutton" aria-label="item quantity" class="cart_quantity" type="number" min="1" value="${item.quantity}"/>
                   <button role="button" class="arrow_plus" onclick="addQuantity(event)"> + </button>
-                  <a class="cart_delete" onclick="deleteItem(event, this)">Delete</a>
+                  <a class="cart_delete" aria-label="delete" onclick="deleteItem(event, this)">Delete</a>
                 </li>
               </ul>
             </div>
@@ -132,6 +132,6 @@ class ShoppingCart {
   init() {
     this.setCart();
     this.loadAllProducts();
-    this.renderAllCart();
+    //this.renderAllCart();
   }
 }

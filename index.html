@@ -24,7 +24,7 @@
           <li role="listitem"><a href="" class="nav-link" role="menuitem">Contact</a></li>
           <li role="listitem"><a href="" class="nav-link" role="menuitem">Footer</a></li>
         </ul>
-        <div class="hamburger" tabindex="0">
+        <div class="hamburger" tabindex="0" aria-label="menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -38,7 +38,7 @@
       </nav>
     </header>
     <main role="main">
-      <section class="sorter">
+      <section class="sorter" aria-label="sort items">
         <select onchange="sortBy(this.value)" role="listbox">
           <option selected disabled>Sort By</option>
           <option role="option" value="available">Availability</option>
@@ -48,7 +48,7 @@
           <option role="option" value="titleZA">Title: Z - A</option>
         </select>
       </section>
-      <section id="cards_wrapper">
+      <section id="cards_wrapper" aria-label="products">
         <!-- <div class="main_card">
           <div class="card_img">
             <img src="https://img.shop.com/Image/260000/260800/260874/products/1598861340.jpg" />
@@ -70,7 +70,7 @@
           <div class="modal-content">
             <button class="close-button" aria-label="Close" role="button" onclick="closeModal()">&times;</button>
             <p class="shop_cart_title">Shopping Cart</p>
-            <section id="cart_container">
+            <section id="cart_container" aria-label="cart items">
               <!-- <div class="cart_item">
                 <div class="cart_img">
                   <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />

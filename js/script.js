@@ -95,12 +95,14 @@ const renderCards = (items) => {
         <section class="card_text_wrapper">
           <h4 class="card_title">${item.caption}</h4>
           <div class="card_details_wrapper">
-            <div>${item.brand}</div>
-            <div>${item.currency}${item.price}</div>
+            ${item.brand}
           </div>
           <section class="card_buttons">
-            <button role="button" class="more_info">More Info.</button>
-            <button role="button" data-id="${item.prodId}" onclick="addCart(this)">Add Cart</button>
+            <div class="card_price">${item.currency}${item.price}</div>
+            <button role="button" data-id="${item.prodId}" onclick="addCart(this)">
+              <img class="card_btn_icon" src="assets/cart_icon.png" height="23px" width="23px" />
+              Add to Cart
+            </button>
           </section>
         </section>
       </div>

@@ -159,7 +159,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 210px;
+  height: 50%;
   background-color: white;
 }
 
@@ -175,7 +175,7 @@ nav {
   align-items: center;
   padding: 20px;
   background: #f0f0f0;
-  height: 210px;
+  height: 50%;
 }
 
 .card_title {
@@ -184,22 +184,35 @@ nav {
 
 .card_buttons {
   bottom:0;
-  display:flex;
+  display:flex !important;
+  flex-direction: row !important;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;;
+}
+
+.card_price {
+  font-size: x-large;
+  color:green;
+  font-weight: 700;
 }
 
 .card_buttons button {
-  /* width: 50%;
-  height: 30px;
   cursor: pointer;
-  color: blue; */
-  width: 50%;
-  height: 30px;
-  cursor: pointer;
-  background: #ececec;
-  text-decoration: none;
-  color: #666;
-  border-radius: 5%;
+  background-color: #3f22ff;
+  color: white;
+  font-weight: 400;
+  white-space:nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-size: 1rem;
+  padding:.4rem;
+  font-size: 22px;
 }
+
 .card_buttons button:hover {
   transform: scale(1.1);
 }
@@ -265,12 +278,6 @@ nav {
 }
 
 /* Cart Modal */
-/* #cart_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15rem;
-} */
 
 .cart_item {
   display: flex;
@@ -391,8 +398,8 @@ input[type="number"]::-webkit-outer-spin-button {
 @media screen and (min-width: 1024px) {
 
   .modal-content {
-    max-height: 50rem;
-    max-width: 55rem;
+    max-height: 80vh;
+    max-width: 80vh;
     min-height: 20rem;
     min-width: 55rem;
     overflow-y: auto;
