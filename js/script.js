@@ -72,13 +72,15 @@ const deleteItem = (item) => {
   shoppingCart.calculateTotal();
 }
 
-const addQuantity = (item) => {
+const addQuantity = (item, element) => {
   shoppingCart.addQuantity(parseInt(item.target.parentElement.dataset.id));
   shoppingCart.calculateTotal();
 }
-const minusQuantity = (item) => {
-  shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
-  shoppingCart.calculateTotal();
+const minusQuantity = (item, element) => {
+  if(element.nextElementSibling.value !== 1) {
+    shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
+    shoppingCart.calculateTotal();
+  } 
 }
 
 const renderCards = (items) => {
@@ -88,7 +90,7 @@ const renderCards = (items) => {
     return `
       <div class="main_card">
         <div class="card_img">
-          <img class="product_img" src="${item.imageURL}" />
+          <img role="img" class="product_img" src="${item.imageURL}" />
         </div>
         <section class="card_text_wrapper">
           <h4 class="card_title">${item.caption}</h4>
@@ -97,8 +99,8 @@ const renderCards = (items) => {
             <div>${item.currency}${item.price}</div>
           </div>
           <section class="card_buttons">
-            <button class="more_info">More Info.</button>
-            <button data-id="${item.prodId}" onclick="addCart(this)">Add Cart</button>
+            <button role="button" class="more_info">More Info.</button>
+            <button role="button" data-id="${item.prodId}" onclick="addCart(this)">Add Cart</button>
           </section>
         </section>
       </div>

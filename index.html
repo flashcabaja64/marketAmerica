@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" role="document">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,14 +17,14 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <ul class="nav_menu">
-          <li><a href="" class="nav-link">Home</a></li>
-          <li><a href="" class="nav-link">Contact</a></li>
-          <li><a href="" class="nav-link">Footer</a></li>
+    <header role="banner">
+      <nav role="navigation">
+        <ul class="nav_menu" role="menu">
+          <li role="listitem"><a href="" class="nav-link" role="menuitem">Home</a></li>
+          <li role="listitem"><a href="" class="nav-link" role="menuitem">Contact</a></li>
+          <li role="listitem"><a href="" class="nav-link" role="menuitem">Footer</a></li>
         </ul>
-        <div class="hamburger">
+        <div class="hamburger" tabindex="0">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -32,67 +32,70 @@
         <div id="logo">
           Shopping Cart
         </div>
-        <div id="cart" onclick="showModal()">
-          <img class="shop_cart" src="assets/shopping_cart.png" alt="shopping cart" />
+        <div id="cart" onclick="showModal()" tabindex="0">
+          <img class="shop_cart" src="assets/shopping_cart.png" role="img" alt="shopping cart" />
         </div>
       </nav>
     </header>
-    <section class="sorter">
-      <select onchange="sortBy(this.value)">
-        <option selected disabled>Sort By</option>
-        <option value="available">Availability</option>
-        <option value="priceLow">Price: Low - High</option>
-        <option value="priceHigh">Price: High - Low</option>
-        <option value="titleAZ">Title: A - Z</option>
-        <option value="titleZA">Title: Z - A</option>
-      </select>
-    </section>
-    <section id="cards_wrapper">
-      <!-- <div class="main_card">
-        <div class="card_img">
-          <img src="https://img.shop.com/Image/260000/260800/260874/products/1598861340.jpg" />
-        </div>
-        <section class="card_text_wrapper">
-          <h4 class="card_title"></h4>
-          <div class="card_details_wrapper">
-            <div>By Zecko's</div>
-            <div>$200.00</div>
+    <main role="main">
+      <section class="sorter">
+        <select onchange="sortBy(this.value)" role="listbox">
+          <option selected disabled>Sort By</option>
+          <option role="option" value="available">Availability</option>
+          <option role="option" value="priceLow">Price: Low - High</option>
+          <option role="option" value="priceHigh">Price: High - Low</option>
+          <option role="option" value="titleAZ">Title: A - Z</option>
+          <option role="option" value="titleZA">Title: Z - A</option>
+        </select>
+      </section>
+      <section id="cards_wrapper">
+        <!-- <div class="main_card">
+          <div class="card_img">
+            <img src="https://img.shop.com/Image/260000/260800/260874/products/1598861340.jpg" />
           </div>
-        </section>
-        <section class="card_buttons">
-          <button class="more_info" data-id="1320567920" onclick="showModal(this)">More Info.</button>
-          <button>Add Cart</button>
-        </section>
-      </div> -->
-    </section>
-    <div class="modal">
-        <div class="modal-content">
-          <span class="close-button" onclick="closeModal()">&times;</span>
-          <p class="shop_cart_title">Shopping Cart</p>
-          <section id="cart_container">
-            <!-- <div class="cart_item">
-              <div class="cart_img">
-                <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />
-              </div>
-              <div class="cart_content">
-                <ul>
-                  <li class="cart_title">Octopus Ocean Animal Bookend Pair Resin</li>
-                  <li class="cart_sub">Measures 11 x 10 1/4 x 7 inches Made of painted resin with distressed finish Made by Midwest, imported</li>
-                  <li class="cart_price">$40.00</li>
-                  <li class="cart_brand"><span>Brand: </span>Mary B Decorative Art</li>
-                  <li class="cart_buttons">
-                    <input type="number"/>
-                    <a data-id="1" class="asdfer" onclick="deleteItem(this)">Delete</a>
-                  </li>
-                </ul>
-              </div>
-            </div> -->
+          <section class="card_text_wrapper">
+            <h4 class="card_title"></h4>
+            <div class="card_details_wrapper">
+              <div>By Zecko's</div>
+              <div>$200.00</div>
+            </div>
           </section>
-          <section id="cart_total">
-            Subtotal: <span id="subtotal"></span>
+          <section class="card_buttons">
+            <button class="more_info" data-id="1320567920" onclick="showModal(this)">More Info.</button>
+            <button>Add Cart</button>
           </section>
+        </div> -->
+      </section>
+      <div class="modal">
+          <div class="modal-content">
+            <button class="close-button" aria-label="Close" role="button" onclick="closeModal()">&times;</button>
+            <p class="shop_cart_title">Shopping Cart</p>
+            <section id="cart_container">
+              <!-- <div class="cart_item">
+                <div class="cart_img">
+                  <img src="https://img.shop.com/Image/240000/249600/249626/products/1686371538__175x175__.jpg" alt="cart_image" />
+                </div>
+                <div class="cart_content">
+                  <ul>
+                    <li class="cart_title">Octopus Ocean Animal Bookend Pair Resin</li>
+                    <li class="cart_sub">Measures 11 x 10 1/4 x 7 inches Made of painted resin with distressed finish Made by Midwest, imported</li>
+                    <li class="cart_price">$40.00</li>
+                    <li class="cart_brand"><span>Brand: </span>Mary B Decorative Art</li>
+                    <li class="cart_buttons">
+                      <input type="number"/>
+                      <a data-id="1" class="asdfer" onclick="deleteItem(this)">Delete</a>
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+            </section>
+            <section id="cart_total">
+              Subtotal: <span id="subtotal"></span>
+            </section>
+        </div>
       </div>
-    </div>
+    </main>
+      
     <script src="js/cart.js"></script>
     <script src="js/script.js"></script>
   </body>

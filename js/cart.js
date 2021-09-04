@@ -9,10 +9,10 @@ class ShoppingCart {
       return item.prodId === product_id
     })
     
-    if(!this.cart.length) {
-      newItem.quantity = 1
-      this.cart.push(newItem)
-    } 
+    // if(!this.cart.length) {
+    //   newItem.quantity = 1
+    //   this.cart.push(newItem)
+    // } 
 
     if(this.find(product_id)) {
       this.find(product_id).quantity += 1
@@ -42,6 +42,12 @@ class ShoppingCart {
     }
     this.cart.splice(idx, 1)
     localStorage.setItem('cart', JSON.stringify(this.cart))
+  }
+
+  setCart() {
+    if(this.getCart() === null) {
+      localStorage.setItem('cart', JSON.stringify(this.cart))
+    }
   }
   
   getCart() {
@@ -80,40 +86,40 @@ class ShoppingCart {
   }
 
   subtractQuantity(product_id) {
-    console.log(this.find(product_id))
+    console.log(this.getCart().find(item => item.prodId == product_id))
     // reflect cart changes in the DOM input value
     this.find(product_id).quantity !== 0 
       ? this.find(product_id).quantity -= 1 
       : this.find(product_id).quantity = 0
 
-    localStorage.setItem('cart', JSON.stringify(this.cart))
+    localStorage.setItem('cart', JSON.stringify(this.cart));
     this.calculateTotal();
   }
 
   renderAllCart() {
     let cart_container = document.getElementById("cart_container");
-    if(this.getCart() !== null || !this.cart.length) {
-      return this.getCart().forEach(item => {
+    if(this.getCart() !== null) {
+      this.getCart().forEach(item => {
         cart_container.innerHTML += `
-        <div class="cart_item">
-          <div class="cart_img">
-            <img src="${item.mediumImageURL}" alt="cart_image" />
+          <div class="cart_item">
+            <div class="cart_img">
+              <img src="${item.mediumImageURL}" alt="${item.caption}" />
+            </div>
+            <div class="cart_content">
+              <ul>
+                <li role="listitem" class="cart_title">${item.caption}</li>
+                <li role="listitem" class="cart_sub">${item.description}</li>
+                <li role="listitem" class="cart_price">${item.currency}${item.price}</li>
+                <li role="listitem" class="cart_brand"><span>Brand: </span>${item.brand}</li>
+                <li role="listitem" class="cart_buttons" data-id="${item.prodId}">
+                  <button role="button" class="arrow_minus" onclick="minusQuantity(event, this)"> - </button>
+                  <input role="spinbutton" class="cart_quantity" type="number" min="1" value="${item.quantity}"/>
+                  <button role="button" class="arrow_plus" onclick="addQuantity(event)"> + </button>
+                  <a class="cart_delete" onclick="deleteItem(event, this)">Delete</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="cart_content">
-            <ul>
-              <li class="cart_title">${item.caption}</li>
-              <li class="cart_sub">${item.description}</li>
-              <li class="cart_price">${item.currency}${item.price}</li>
-              <li class="cart_brand"><span>Brand: </span>${item.brand}</li>
-              <li class="cart_buttons" data-id="${item.prodId}">
-                <button class="arrow_minus" onclick="minusQuantity(event)"> - </button>
-                <input class="cart_quantity" type="number" value="${item.quantity}"/>
-                <button class="arrow_plus" onclick="addQuantity(event)"> + </button>
-                <a class="cart_delete" onclick="deleteItem(this)">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </div>
         `
       })
     } else {
@@ -124,6 +130,7 @@ class ShoppingCart {
   }
 
   init() {
+    this.setCart();
     this.loadAllProducts();
     this.renderAllCart();
   }
