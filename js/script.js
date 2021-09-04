@@ -4,6 +4,7 @@ const shoppingCart = new ShoppingCart();
 document.addEventListener('DOMContentLoaded', () => {
   getAllProducts();
   shoppingCart.init();
+  window.onscroll = () => stickyNav()
 })
 
 const hamburger = document.querySelector('.hamburger');
@@ -15,6 +16,16 @@ const showMenu = () => {
 }
 
 hamburger.addEventListener("click", showMenu);
+
+const stickyNav = () => {
+  let nav = document.getElementById('sticky_nav');
+  let sticky = nav.offsetTop
+  if (window.pageYOffset >= sticky) {
+    nav.classList.add("sticky")
+  } else {
+    nav.classList.remove("sticky");
+  }
+}
 
 // Populate all items
 const getAllProducts = () => {
@@ -73,12 +84,17 @@ const deleteItem = (item) => {
 }
 
 const addQuantity = (item, element) => {
-  shoppingCart.addQuantity(parseInt(item.target.parentElement.dataset.id));
-  shoppingCart.calculateTotal();
+  if(element.previousElementSibling.value <= 500) {
+    shoppingCart.addQuantity(parseInt(item.target.parentElement.dataset.id));
+    element.previousElementSibling.value ++
+    shoppingCart.calculateTotal();
+  }
+  
 }
 const minusQuantity = (item, element) => {
-  if(element.nextElementSibling.value !== 1) {
+  if(element.nextElementSibling.value > 1) {
     shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
+    element.nextElementSibling.value -= 1
     shoppingCart.calculateTotal();
   } 
 }

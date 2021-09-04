@@ -82,7 +82,12 @@ class ShoppingCart {
 
   addQuantity(product_id) {
     //console.log(product_id)
-    this.find(product_id).quantity += 1
+    this.find(product_id).quantity <= 500
+      ? this.find(product_id).quantity += 1
+      : this.find(product_id).quantity = 500
+      
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.calculateTotal();
   }
 
   subtractQuantity(product_id) {
@@ -114,8 +119,8 @@ class ShoppingCart {
                 <li role="listitem" class="cart_buttons" data-id="${item.prodId}">
                   <button role="button" class="arrow_minus" onclick="minusQuantity(event, this)"> - </button>
                   <input role="spinbutton" aria-label="item quantity" class="cart_quantity" type="number" min="1" value="${item.quantity}"/>
-                  <button role="button" class="arrow_plus" onclick="addQuantity(event)"> + </button>
-                  <a class="cart_delete" aria-label="delete" onclick="deleteItem(event, this)">Delete</a>
+                  <button role="button" class="arrow_plus" onclick="addQuantity(event, this)"> + </button>
+                  <a class="cart_delete" aria-label="delete" onclick="deleteItem(this)">Delete</a>
                 </li>
               </ul>
             </div>
