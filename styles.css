@@ -51,11 +51,11 @@ nav {
   top: 3.1rem;
   flex-direction: column;
   background-color: #4a2ff7ab;
-  width: 25%;
+  width: 35%;
   text-align: center;
   transition: 0.3s;
   box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-  min-height: 93vh;
+  min-height: 96vh;
 }
 
 .nav_menu.active {
@@ -398,6 +398,10 @@ input[type="number"]::-webkit-outer-spin-button {
   .cart_content > ul {
     text-align: center;
   }
+
+  .nav_menu {
+    width: 25%;
+  }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -431,5 +435,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .cart_item {
     flex-direction: row;
+  }
+
+  .nav_menu {
+    width: 30%;
   }
 } 

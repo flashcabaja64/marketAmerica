@@ -4,7 +4,7 @@ const shoppingCart = new ShoppingCart();
 document.addEventListener('DOMContentLoaded', () => {
   getAllProducts();
   shoppingCart.init();
-  window.onscroll = () => stickyNav()
+  window.onscroll = () => stickyNav();
 })
 
 const hamburger = document.querySelector('.hamburger');
@@ -148,4 +148,3 @@ const closeModal = () => {
   document.getElementById("cart_container").innerHTML = '';
   document.body.style.overflow = 'auto';
 }
-
