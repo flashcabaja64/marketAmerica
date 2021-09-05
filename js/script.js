@@ -89,8 +89,8 @@ const addQuantity = (item, element) => {
     element.previousElementSibling.value ++
     shoppingCart.calculateTotal();
   }
-  
 }
+
 const minusQuantity = (item, element) => {
   if(element.nextElementSibling.value > 1) {
     shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
@@ -115,7 +115,7 @@ const renderCards = (items) => {
           </div>
           <section class="card_buttons">
             <div class="card_price">${item.currency}${item.price}</div>
-            <button role="button" data-id="${item.prodId}" onclick="addCart(this)">
+            <button class="card_btn_add" ${!item.isAvailable ? 'disabled' : ''} role="button" data-id="${item.prodId}" onclick="addCart(this)">
               <img class="card_btn_icon" src="assets/cart_icon.png" height="23px" width="23px" />
               Add to Cart
             </button>
@@ -124,22 +124,31 @@ const renderCards = (items) => {
       </div>
     `
   })
-  card_container.innerHTML = result.join("")
+  card_container.innerHTML = result.join("");
+  disabledButton();
+}
+
+const disabledButton = () => {
+  let buttons = document.querySelectorAll('button.card_btn_add');
+
+  buttons.forEach(button => {
+    if(button.disabled) {
+      button.classList.add("inactive")
+      button.innerText = "Unavailable";
+      button.style.transform = 'none'
+    } else {
+      button.classList.remove("inactive")
+    }
+  })
 }
 
 // Modal functions
-const showModal = (element) => {
+const showModal = () => {
   shoppingCart.renderAllCart();
   shoppingCart.calculateTotal();
   document.body.style.overflow = 'hidden';
   const modal = document.querySelector(".modal");
   modal.classList.toggle("show-modal");
-  //renderModal(element.dataset.id)
-}
-
-const renderModal = (id) => {
-  return jsonlist.find(el => el.prodId === parseInt(id));
-  //console.log(res.quantity)
 }
 
 const closeModal = () => {

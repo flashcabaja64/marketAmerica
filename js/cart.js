@@ -77,7 +77,7 @@ class ShoppingCart {
     let result = this.getCart().reduce((acc, cur) => {
       return acc + (cur.quantity * cur.price)
     }, 0)
-    return subtotal.innerHTML = result
+    return subtotal.innerHTML = result.toFixed(2)
   }
 
   addQuantity(product_id) {

@@ -20,6 +20,32 @@ body {
   height: 100vh;
 }
 
+button.inactive {
+  cursor: not-allowed !important;
+  background-color: #cccccc !important;
+}
+
+/* Custom Scrollbar */
+
+.modal-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
 /* Navigation */
 
 header {
