@@ -1,4 +1,4 @@
-const jsonlist = []
+const jsonlist = [];
 const shoppingCart = new ShoppingCart();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,9 +19,9 @@ hamburger.addEventListener("click", showMenu);
 
 const stickyNav = () => {
   let nav = document.getElementById('sticky_nav');
-  let sticky = nav.offsetTop
+  let sticky = nav.offsetTop;
   if (window.pageYOffset >= sticky) {
-    nav.classList.add("sticky")
+    nav.classList.add("sticky");
   } else {
     nav.classList.remove("sticky");
   }
@@ -32,7 +32,7 @@ const getAllProducts = () => {
   fetch('ListJSONTest.json')
     .then(async res => await res.json())
     .then(async data => {
-      await data.List.forEach(el => jsonlist.push(el))
+      await data.List.forEach(el => jsonlist.push(el));
     })
     .then(() => renderCards(jsonlist))
 }
@@ -75,28 +75,32 @@ const sortBy = (value) => {
 // Cart functions
 const addCart = (item) => {
   shoppingCart.addItem(parseInt(item.dataset.id));
+  shoppingCart.totalQuantity();
 }
 
 const deleteItem = (item) => {
   shoppingCart.deleteCartItem(parseInt(item.parentElement.dataset.id));
   item.parentElement.parentElement.parentElement.parentElement.remove();
   shoppingCart.calculateTotal();
+  shoppingCart.totalQuantity();
 }
 
 const addQuantity = (item, element) => {
   if(element.previousElementSibling.value <= 500) {
     shoppingCart.addQuantity(parseInt(item.target.parentElement.dataset.id));
-    element.previousElementSibling.value ++
+    element.previousElementSibling.value ++;
     shoppingCart.calculateTotal();
   }
+  shoppingCart.totalQuantity();
 }
 
 const minusQuantity = (item, element) => {
   if(element.nextElementSibling.value > 1) {
     shoppingCart.subtractQuantity(parseInt(item.target.parentElement.dataset.id));
-    element.nextElementSibling.value -= 1
+    element.nextElementSibling.value -= 1;
     shoppingCart.calculateTotal();
-  } 
+  }
+  shoppingCart.totalQuantity();
 }
 
 const renderCards = (items) => {
@@ -111,7 +115,7 @@ const renderCards = (items) => {
         <section class="card_text_wrapper">
           <h4 class="card_title">${item.caption}</h4>
           <div class="card_details_wrapper">
-            ${item.brand}
+            <span class="card_brand">Brand: </span>${item.brand}
           </div>
           <section class="card_buttons">
             <div class="card_price">${item.currency}${item.price}</div>
@@ -133,11 +137,10 @@ const disabledButton = () => {
 
   buttons.forEach(button => {
     if(button.disabled) {
-      button.classList.add("inactive")
+      button.classList.add("inactive");
       button.innerText = "Unavailable";
-      button.style.transform = 'none'
     } else {
-      button.classList.remove("inactive")
+      button.classList.remove("inactive");
     }
   })
 }

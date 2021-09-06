@@ -8,20 +8,15 @@ class ShoppingCart {
     let newItem = this.allProducts.find(item => {
       return item.prodId === product_id
     })
-    
-    // if(!this.cart.length) {
-    //   newItem.quantity = 1
-    //   this.cart.push(newItem)
-    // } 
 
     if(this.find(product_id)) {
-      this.find(product_id).quantity += 1
+      this.find(product_id).quantity += 1;
     } else {
       newItem.quantity = 1
-      this.cart.push(newItem)
+      this.cart.push(newItem);
     }
 
-    localStorage.setItem('cart', JSON.stringify(this.cart))
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   find(product_id) {
@@ -46,12 +41,12 @@ class ShoppingCart {
 
   setCart() {
     if(this.getCart() === null) {
-      localStorage.setItem('cart', JSON.stringify(this.cart))
+      localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
   
   getCart() {
-    return JSON.parse(localStorage.getItem('cart'))
+    return JSON.parse(localStorage.getItem('cart'));
   }
 
   clearCart() {
@@ -64,24 +59,22 @@ class ShoppingCart {
       .then(async data => {
         await data.List.forEach(el => this.allProducts.push(el))
       })
-      .then(() => {
-        this.getCart().forEach(item => this.cart.push(item))
+      .then(async () => {
+        await this.getCart().forEach(item => this.cart.push(item))
       })
       .catch(err => console.log(err))
   }
 
   //Calculations
-
   calculateTotal() {
     let subtotal = document.getElementById("subtotal");
     let result = this.getCart().reduce((acc, cur) => {
-      return acc + (cur.quantity * cur.price)
+      return acc + (cur.quantity * cur.price);
     }, 0)
-    return subtotal.innerHTML = result.toFixed(2)
+    return subtotal.innerHTML = result.toFixed(2);
   }
 
   addQuantity(product_id) {
-    //console.log(product_id)
     this.find(product_id).quantity <= 500
       ? this.find(product_id).quantity += 1
       : this.find(product_id).quantity = 500
@@ -92,13 +85,27 @@ class ShoppingCart {
 
   subtractQuantity(product_id) {
     console.log(this.getCart().find(item => item.prodId == product_id))
-    // reflect cart changes in the DOM input value
     this.find(product_id).quantity !== 0 
       ? this.find(product_id).quantity -= 1 
       : this.find(product_id).quantity = 0
 
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.calculateTotal();
+  }
+
+  totalQuantity() {
+    let quantity = document.getElementById("dot");
+
+    if(this.getCart()) {
+      let result = this.getCart().reduce((acc, cur) => {
+        return acc + cur.quantity
+      }, 0)
+      result > 10 
+        ? quantity.innerText = '10+' 
+        : quantity.innerText = result
+    } else {
+      quantity.style.display = 'none'
+    } 
   }
 
   renderAllCart() {
@@ -129,7 +136,7 @@ class ShoppingCart {
       })
     } else {
       cart_container.innerHTML = `
-      <div class="cart_empty"><p>Cart is empty</p></div>
+        <div class="cart_empty"><p>Cart is empty</p></div>
       `
     }
   }
@@ -137,6 +144,6 @@ class ShoppingCart {
   init() {
     this.setCart();
     this.loadAllProducts();
-    //this.renderAllCart();
+    this.totalQuantity();
   }
 }

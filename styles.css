@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -12,10 +13,6 @@ li {
   list-style: none;
 }
 
-html {
-  font-family: 'Roboto', sans-serif;
-}
-
 body {
   height: 100vh;
 }
@@ -23,6 +20,7 @@ body {
 button.inactive {
   cursor: not-allowed !important;
   background-color: #cccccc !important;
+  transform: none !important;
 }
 
 /* Custom Scrollbar */
@@ -61,8 +59,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1.5rem;
-  
+  padding: 0rem 1rem;
 }
 
 .sticky {
@@ -139,6 +136,24 @@ nav {
   cursor: pointer;
 }
 
+#dot {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  bottom: 2px;
+  right: 21px;
+  color: white;
+  text-align: center;
+}
+
+#logo,
+.close-button {
+  font-size: x-large;
+}
+
 /* SortBy Select */
 
 .sorter {
@@ -146,6 +161,7 @@ nav {
   justify-content: flex-end;
   padding-top: 10px;
   padding-right: 15px;
+  max-width: 1200px;
 }
 
 .sorter > select {
@@ -334,21 +350,19 @@ nav {
   margin-top: 15px;
 }
 
-.cart_title {
-  font-size: large;
-}
-
 .cart_sub,
 .cart_brand {
   font-size: small;
 }
 
-.cart_price {
+.cart_price,
+.cart_title {
   font-weight: 600;
   font-size: larger;
 }
 
-.cart_brand > span {
+.cart_brand > span,
+.card_brand  {
   font-weight: bold;
   font-size: small;
 }
@@ -392,7 +406,7 @@ input[type="number"] {
   padding: 5px 10px;
   border-radius: 4px;
   outline: none;
-  width: 15%;
+  width: 60px;
   text-align: right;
 }
 
@@ -431,8 +445,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media only screen and (max-width: 1023px) {
-
-
   .sorter {
     justify-content: center;
   }
@@ -441,16 +453,8 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: row;
   }
 }
-/* 
-@media (min-width: 900px) {
-
-  .main_card {
-    height: 20rem
-  }
-} */
 
 @media screen and (min-width: 1024px) {
-
   .modal-content {
     max-height: 80vh;
     max-width: 80vh;

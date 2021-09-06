@@ -7,7 +7,7 @@
 
     <title>Market America Assessment</title>
     <meta name="description" content="A simple site for SHOP products.">
-    <meta name="author" content="Hubert">
+    <meta name="author" content="Hubert Yang">
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -30,12 +30,14 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
-        <div id="logo">Shopping Cart</div>
+        <div id="logo">SHOP.com</div>
         <div id="cart" onclick="showModal()" tabindex="0">
           <img class="shop_cart" src="assets/shopping_cart.png" role="img" alt="shopping cart" />
+          <div id="dot"></div>
         </div>
       </nav>
     </header>
+
     <main role="main">
       <section class="sorter" aria-label="sort items">
         <select onchange="sortBy(this.value)" role="listbox">
@@ -50,19 +52,18 @@
       <section id="cards_wrapper" aria-label="products">
       </section>
       <div class="modal">
-          <div class="modal-content">
-            <button class="close-button" aria-label="Close" role="button" onclick="closeModal()">&times;</button>
-            <p class="shop_cart_title">Shopping Cart</p>
-            <section id="cart_container" aria-label="cart items">
-            </section>
-            <section id="cart_total">
-              Subtotal: <span id="subtotal"></span>
-            </section>
+        <div class="modal-content">
+          <button class="close-button" aria-label="Close" role="button" onclick="closeModal()">&times;</button>
+          <p class="shop_cart_title">Shopping Cart</p>
+          <section id="cart_container" aria-label="cart items"></section>
+          <section id="cart_total">
+            Total: <span id="subtotal"></span>
+          </section>
         </div>
       </div>
     </main>
-      
-    <script src="js/cart.js"></script>
-    <script src="js/script.js"></script>
+
+    <script src="js/cart.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
   </body>
 </html>
