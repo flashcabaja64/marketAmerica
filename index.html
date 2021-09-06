@@ -55,7 +55,9 @@
         <div class="modal-content">
           <button class="close-button" aria-label="Close" role="button" onclick="closeModal()">&times;</button>
           <p class="shop_cart_title">Shopping Cart</p>
-          <section id="cart_container" aria-label="cart items"></section>
+          <section id="cart_wrapper">
+            <div id="cart_container" aria-label="cart items"></div>
+          </section>
           <section id="cart_total">
             Total: <span id="subtotal"></span>
           </section>

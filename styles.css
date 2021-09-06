@@ -25,22 +25,22 @@ button.inactive {
 
 /* Custom Scrollbar */
 
-.modal-content::-webkit-scrollbar {
+#cart_wrapper::-webkit-scrollbar {
   width: 20px;
 }
 
-.modal-content::-webkit-scrollbar-track {
+#cart_wrapper::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.modal-content::-webkit-scrollbar-thumb {
+#cart_wrapper::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
-.modal-content::-webkit-scrollbar-thumb:hover {
+#cart_wrapper::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
 
@@ -286,13 +286,10 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 1rem 1.5rem;
+  padding: 1rem 0.5rem 1rem 1rem;
   width: 24rem;
   border-radius: 0.5rem;
   z-index: 4;
-  overflow-y: auto;
-  max-height: 75vh;
-  min-height: 30vh;
   width: 80%;
 }
 
@@ -338,6 +335,12 @@ nav {
 
 .cart_img {
   margin: 0 10px 0 10px;
+}
+
+#cart_wrapper {
+  overflow-y: auto;
+  max-height: 75vh;
+  min-height: 30vh;
 }
 
 .cart_content {
