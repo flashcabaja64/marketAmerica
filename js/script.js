@@ -9,21 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav_menu');
+const modalContainer = document.getElementsByClassName("modal")[0];
 
 const showMenu = () => {
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
 }
 
+const closeOnClick = (event) => {
+  if(event.target == modalContainer) {
+    closeModal();
+  }
+}
+
 hamburger.addEventListener("click", showMenu);
+modalContainer.addEventListener("click", closeOnClick)
 
 const stickyNav = () => {
   let nav = document.getElementById('sticky_nav');
+  let main = document.getElementsByTagName("main")[0];
   let sticky = nav.offsetTop;
   if (window.pageYOffset >= sticky) {
     nav.classList.add("sticky");
+    main.style.top = "50px";
   } else {
     nav.classList.remove("sticky");
+    main.style.top = "0";
   }
 }
 
